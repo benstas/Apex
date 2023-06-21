@@ -1,0 +1,49 @@
+trigger XXXXXXTrigger1 on XXXXXX (before insert , before update , before delete , after insert , after update, after delete, after undelete ) {
+  
+    SWITCH on Trigger.operationType {
+        
+        WHEN BEFORE_INSERT  { }
+        WHEN BEFORE_UPDATE  { }
+        WHEN BEFORE_DELETE  { }
+        WHEN AFTER_INSERT   { }
+        WHEN AFTER_UPDATE   { }
+        WHEN AFTER_DELETE   { }
+        WHEN AFTER_UNDELETE { }
+ 
+    }
+    
+}
+
+//---------------------------------------------
+
+trigger XXXXXXTrigger2 on XXXXXX (before insert , before update , before delete , after insert , after update, after delete, after undelete) {
+   
+      if ( Trigger.IsBefore &&  Trigger.isInsert) { }
+      if ( Trigger.IsBefore &&  Trigger.isUpdate) { }
+      if ( Trigger.IsBefore &&  Trigger.isDelete) { }
+      if ( Trigger.IsAfter  &&  Trigger.isInsert) { }
+      if ( Trigger.IsAfter  &&  Trigger.isUpdate) { }
+      if ( Trigger.IsAfter  &&  Trigger.isDelete) { }
+      if ( Trigger.IsAfter  &&  Trigger.isUndelete) { }
+   
+    
+}
+
+//---------------------------------------------
+
+trigger XXXXXXTrigger3 on XXXXXX (before insert , before update , before delete , after insert , after update, after delete, after undelete) {
+ if ( Trigger.IsBefore ) {
+        if ( Trigger.isInsert) { }
+        if ( Trigger.isUpdate) { }
+        if ( Trigger.isDelete) { }
+    
+ } 
+    
+ if ( Trigger.IsAfter ) {
+        if ( Trigger.isInsert)   { }
+        if ( Trigger.isUpdate)   { }
+          if ( Trigger.isDelete)   { }
+        if ( Trigger.isUndelete) { }
+    
+ }  
+}
