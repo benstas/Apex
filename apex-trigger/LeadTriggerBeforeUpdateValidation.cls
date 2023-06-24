@@ -9,14 +9,7 @@ trigger LeadTriggerBeforeUpdateValidation on Lead (before insert, before update 
                 Lead Trigger -> before update
              */
             
-            for (Lead newLead : Trigger.new) {
-                
-                Lead oldLead = Trigger.oldMap.get(newLead.Id);
-                
-                if (newLead.Status != 'Working - Contacted' && oldLead.Status == 'Open - Not Contacted') {
-                    newLead.Status.addError('You should do Working before!!!'); 
-                }
-            }
+			LeadTriggerHandler.statusCheck(Trigger.new, Trigger.oldMap);             
         }
  	}
 }
