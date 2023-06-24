@@ -22,11 +22,15 @@ trigger AccountTriggerUndelete on Account (before insert, before update , before
             
             List<Contact> conList = new List<Contact>(); 
                 
-                for (Contact con : contactQuery) {
-                    con.Description = 'Account newMap ile restore edildi. ';
-                    conList.add(con);
-                }
-                update conList;
+            String restoredOwner = System.UserInfo.getName(); 
+            Date restoredDate = System.today();
+        
+            for (Contact con : contactQuery) {
+                con.Description = 'Account newMap ile restore edildi. Restore eden kişi: ' + 
+                    'restoredOwner ' + 'Restore zamanı: ' + restoredDate;
+                conList.add(con);
+            }
+            update conList;  
         }
     }    
 }
