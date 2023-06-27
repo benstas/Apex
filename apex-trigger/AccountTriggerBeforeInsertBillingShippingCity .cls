@@ -6,7 +6,7 @@ trigger AccountTriggerBeforeInsertBillingShippingCity on Account (before insert 
         	
             for(Account newAcc : Trigger.new) {
                 if(newAcc.BillingCity != null && newAcc.ShippingCity == null) {
-                    newAcc.ShippingCity.addError('ShippingCity can not be empty!'); 
+                    newAcc.ShippingCity = newAcc.BillingCity; 
                 }
             }
         }
