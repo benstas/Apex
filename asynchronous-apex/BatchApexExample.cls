@@ -32,7 +32,17 @@ public class BatchApexExample implements Database.Batchable<sObject> {
         // execute any post-processing operations like sending email
     }
 }
+// https://www.sfdcpoint.com/salesforce/batch-apex-example-in-salesforce/  
 /*
     BatchApexExample myBatchObject = new BatchApexExample(); 
-    Database.executeBatch(myBatchObject);
+    // Database.executeBatch(myBatchObject);
+	Id batchId = Database.executeBatch(myBatchObject, 100);
+
+	AsyncApexJob job = [SELECT Id, Status, JobType, JobItemsProcessed FROM AsyncApexJob];
+	System.debug(job.Id); 
+    System.debug(job.Status); 
+    System.debug(job.JobType); 
+    System.debug(job.JobItemsProcessed); 
+
+	AsyncApexJob job = [SELECT Id, Status, JobType, JobItemsProcessed FROM AsyncApexJob WHERE Id='7078d00003lQmjpAAC'];
 */
