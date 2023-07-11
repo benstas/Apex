@@ -7,15 +7,17 @@ public class TestContactListCall {
         if(conList.size() > 0) {
              return conList.size(); 
         } else {
-            return 0;   
+            return 0;    
         }
        
-    }
+    } 
+    
+    //--------------------------------------
     
     public static List<contact> contactListesi(Id accId) {
         
-        List<contact> conList = [SELECT Id, AccountId FROM Contact WHERE AccountId =:accId]; 
+        List<contact> conList = [SELECT Id, AccountId FROM Contact WHERE AccountId =:accId];  
         
-        return conList; 
+        return conList;   
     }
 }
