@@ -3,7 +3,7 @@ public class TestContactListCallTestDataFactory {
 	
     @isTest
     static Void contactSayisiTest(){
-        
+        // Acc
         Account acc = DataFactory.createAccount();
         /*  Account acc = new Account();
             acc.Name = 'Test';
@@ -13,6 +13,11 @@ public class TestContactListCallTestDataFactory {
         acc.Phone='8987633';
         acc.Fax = 'agdjsgds';
         insert acc;
+        
+        // Acc2
+        Account acc2 = DataFactory.createAccount();
+        acc2.Phone='8987633';
+        insert acc2;
         
         //----------------------------
         
@@ -27,7 +32,10 @@ public class TestContactListCallTestDataFactory {
         //----------------------------
         
         Integer sonuc =   TestContactListCall.contactSayisi(acc.id );        
-        system.assertEquals( 2 , sonuc);        
+        system.assertEquals( 2 , sonuc);  
+        
+        Integer sonuc2 =   TestContactListCall.contactSayisi(acc2.id );        
+        system.assertEquals( 0 , sonuc2);  
     } 
     
     //==================================================
