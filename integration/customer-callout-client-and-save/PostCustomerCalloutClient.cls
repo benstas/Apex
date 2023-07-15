@@ -3,7 +3,9 @@ public class PostCustomerCalloutClient {
     public static FINAL String END_POINT = 'https://gorest.co.in/public/v2/users'; 
     public static FINAL String TOKEN = 'Bearer f0fb965a5ff6a9cd6663a1f3b4c8663f18396ea25183a582afc08524704e838d'; 
     
+    
     // PostCustomerCalloutClient.postCustomerParam('Pınar','pinar@example.com','female','active'); 
+    @future(callout=true) 
     public static void postCustomerParam(String name, String email, String gender, String Status) {
         
         Http http = new Http(); 
@@ -30,6 +32,7 @@ public class PostCustomerCalloutClient {
     
     
     // PostCustomerCalloutClient.postCustomerBody('Zehra','zehra@example.com','female','active');
+    @future(callout=true) 
     public static void postCustomerBody(String name, String email, String gender, String Status) {
         
         Http http = new Http(); 
