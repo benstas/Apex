@@ -6,6 +6,10 @@ public class DeleteCustomerCalloutClient {
 	// DeleteCustomerCalloutClient.deleteCustomerEndPoint('3688417');     
 	public static void deleteCustomerEndPoint(String id) {
         
+        // Silinen geri dönmediği için silinen record log alınması için burada GET ile getirilir 
+        // Sonra değişkene atanır ve object hale çevirerek SF DB'e kaydedilir.  
+        // String jsonBody = GetCumtomerReturn.getCustomerEndPoint(id); 
+        
         Http http = new Http(); 
         
         HttpRequest request = new HttpRequest();
