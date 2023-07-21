@@ -129,7 +129,7 @@ public class CaseClientCallout {
    
     
     
-    // CaseClientCallout.postCaseTrigger();  // 
+    // CaseClientCallout.postCaseTrigger(); 
     @future(Callout=true) // Trigger ile kullanılır
     public static void postCaseTrigger(String caseId){
         
@@ -140,9 +140,9 @@ public class CaseClientCallout {
             request.setMethod('POST');
         
             // request.setEndpoint('callout:SabahEkibiIleIletisim' + '/cases');        
-        	request.setEndpoint('https://mscom-6b-dev-ed.develop.my.salesforce.com/services/apexrest/cases');
+        	request.setEndpoint('https://mscom-6b-dev-ed.develop.my.salesforce.com/services/apexrest/cases'); // 404
 			request.setHeader('Authorization', 'Bearer !AQMAQL9SARTTm16zcffSixWVb3mcJNvePWV1b7Zu_BGYWB4up.2G4cFhZ6T8anRm8agtEmtWBgWaXCeaB94.gwuV44D_yvz8');
-        	// Authorization sorun olursa 401 hatası alınır. 
+        	// Authorization sorun olursa 400 401 hatası alınır. 
        		request.setHeader('Content-Type', 'application/json; charset=UTF-8');
         	
         	Case caseObj = [SELECT Subject, Origin FROM Case WHERE Id =: caseId];  
@@ -151,13 +151,14 @@ public class CaseClientCallout {
         		cc.Subject = caseObj.Subject;
         		cc.Origin = caseObj.Origin;
                 
-            String body = JSON.serialize(cc); 
-        
+            String body = JSON.serialize(cc);         
         	// System.debug(body);
         	// string body = '{"Subject":"ZZZZCase from client", "Origin":"Phone"}';
             request.setBody(body);
+        
       
         HttpResponse  response= http.send(request);
+        
         
          if(response.getStatusCode() ==  201 || response.getStatusCode() ==  200 ){
             
