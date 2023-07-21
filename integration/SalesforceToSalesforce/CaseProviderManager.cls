@@ -20,21 +20,23 @@ global class CaseProviderManager {
     
     // CaseProviderManager.getCaseProvider();
     // https://mscom-6b-dev-ed.develop.my.salesforce.com/services/apexrest/cases  
+    /*
     @HttpGet
     global static List<Case> getCaseProvider(){
         
        	List<case> caseList = [SELECT Type, Status, Reason, Origin, Subject, Priority FROM case Limit 5]; 
        	// (Case:{Status=New, Origin=Phone, Subject=Deneme Case, Priority=Medium, Id=5008d00000W3Y3WAAV})
        	// JSON.serialize(o) işini Salesforce yapar. 
-    	return caseList;        
+    	return caseList;     
+       
     }    
-    
+    */
     
     //-------------------------------------------------------------------------------------
     
     // CaseProviderManager.getCaseProviderSingle();
-    // https://mscom-6b-dev-ed.develop.my.salesforce.com/services/apexrest/cases/id
-     /*
+    // https://mscom-6b-dev-ed.develop.my.salesforce.com/services/apexrest/cases/202020
+    
     @HttpGet
     global static Case getCaseProviderSingle(){
         
@@ -43,11 +45,12 @@ global class CaseProviderManager {
         
         String caseId = req.requestURI.substring(req.requestURI.lastIndexOf('/')+1);
         // cases/id ile gelen Id alınır. 
+        
         Case singleCase = [SELECT Type, Status, Reason, Origin, Subject, Priority FROM Case WHERE Id = :caseId];
         // Case:{Status=New, Origin=Phone, Subject=Put Case, Priority=Low, Id=5008d00000W3a5AAAR}
         return singleCase;  
     }  
-    */
+    
     
     
     //========================================================================
@@ -87,7 +90,7 @@ global class CaseProviderManager {
     
     
     // CaseProviderManager.deleteCaseProvider();
-    // https://mscom-6b-dev-ed.develop.my.salesforce.com/services/apexrest/cases/id
+    // https://mscom-6b-dev-ed.develop.my.salesforce.com/services/apexrest/cases/202020
     @HttpDelete
     global static String deleteCaseProvider(){
         // Postman GoRest için / Param ile siler. 
@@ -176,6 +179,5 @@ global class CaseProviderManager {
         update updatedCase; 
         
         return updatedCase;
-    }
-               
+    }        
 }
